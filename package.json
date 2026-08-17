@@ -1,0 +1,21 @@
+{
+  "name": "arjhun-portfolio",
+  "version": "1.0.0",
+  "description": "Arjhun O - Fullstack Developer Retro-Cyber Interactive Scroll Portfolio",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx -y serve -l 8000 ./",
+    "start": "npx -y serve -l 8000 ./"
+  },
+  "keywords": [
+    "portfolio",
+    "fullstack",
+    "developer",
+    "interactive",
+    "retro",
+    "threejs",
+    "arcade"
+  ],
+  "author": "Arjhun O",
+  "license": "MIT"
+}

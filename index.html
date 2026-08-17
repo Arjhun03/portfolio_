@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arjhun O | Fullstack Developer Portfolio</title>
+
+  <!-- SEO and Meta Tags -->
+  <meta name="description" content="Portfolio of Arjhun O - Fullstack Developer specializing in PHP, MySQL, React, Firebase, REST APIs, and Algorithmic Problem Solving (200+ LeetCode solved).">
+  <meta name="author" content="Arjhun O">
+  <meta name="keywords" content="Arjhun O, Fullstack Developer, PHP Developer, React Developer, MinVis, FinTrack, El Dorado Casino, LeetCode, PSNA College">
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="Arjhun O - Fullstack Developer Portfolio">
+  <meta property="og:description" content="Explore interactive fullstack projects, AI visualizations, multiplayer platforms, and LeetCode problem solving stats.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts and FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=Outfit:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+  <!-- Dynamic Background Canvas and Ambient Lighting -->
+  <canvas id="ambient-canvas"></canvas>
+  <div class="ambient-glow-orb orange-orb"></div>
+  <div class="ambient-glow-orb dark-orb"></div>
+
+  <!-- HEADER / NAVBAR (Matching Reference Image) -->
+  <header>
+    <nav class="navbar" id="navbar">
+      <a href="#home" class="nav-brand" id="nav-brand">
+        <span class="brand-text">ARJHUN<span class="brand-orange">.O</span></span>
+      </a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home" class="nav-link active" id="nav-link-home">Home</a></li>
+        <li><a href="#services" class="nav-link" id="nav-link-services">Services</a></li>
+        <li><a href="#about" class="nav-link" id="nav-link-about">About me</a></li>
+        <li><a href="#portfolio" class="nav-link" id="nav-link-portfolio">Portfolio</a></li>
+        <li><a href="#contact" class="nav-link" id="nav-link-contact">Contact me</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="icon-btn" id="sound-toggle-btn" title="Toggle Sound Effects">
+          <i class="fas fa-volume-up" id="sound-icon"></i>
+        </button>
+        <button class="icon-btn" id="cmd-btn" title="Command Palette (Ctrl+K)">
+          <i class="fas fa-terminal"></i>
+        </button>
+        <a href="#contact" class="btn btn-hire" id="nav-hire-btn">Contact Me</a>
+      </div>
+
+      <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Toggle Navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO SECTION (Matching Reference Image Layout) -->
+    <section class="hero-section" id="home">
+      <div class="container">
+        <div class="hero-grid">
+          
+          <!-- LEFT HERO COLUMN -->
+          <div class="hero-text-content">
+            <div class="hero-greeting">Hi I am</div>
+            <h2 class="hero-subname">Arjhun O</h2>
+            <h1 class="hero-main-title">
+              <span class="orange-text">Fullstack Developer</span>
+            </h1>
+
+            <!-- Social Media Icons (Reference Style) -->
+            <div class="hero-socials">
+              <a href="https://github.com/arjhun03" target="_blank" rel="noopener" class="social-circle-btn" title="GitHub">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/arjhun-o-06ab8b334" target="_blank" rel="noopener" class="social-circle-btn" title="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="https://leetcode.com/u/arjhun_03/" target="_blank" rel="noopener" class="social-circle-btn" title="LeetCode">
+                <i class="fas fa-code"></i>
+              </a>
+              <a href="mailto:arjhun010905@gmail.com" class="social-circle-btn" title="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="hero-actions-row">
+              <a href="#contact" class="btn btn-orange-pill" id="hero-hire-btn">Contact Me</a>
+              <a href="https://drive.google.com/file/d/1lNiYAaoV4RtExp6FZuctJWOBVVMoTZwy/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-dark-outline-pill" id="hero-cv-btn">
+                <i class="fas fa-download"></i> Download CV
+              </a>
+              <a href="https://idas-gameboy.netlify.app" target="_blank" rel="noopener" class="btn btn-gameboy-pill" id="hero-gameboy-btn" title="Open 3D Gameboy Portfolio">
+                <i class="fas fa-gamepad"></i> 3D Gameboy Arcade
+              </a>
+            </div>
+
+            <!-- Stats Bar Box (Matching Reference Image) -->
+            <div class="hero-stats-box" id="hero-stats-box">
+              <div class="stat-item">
+                <div class="stat-value">2+</div>
+                <div class="stat-label">Experiences</div>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-item">
+                <div class="stat-value">10+</div>
+                <div class="stat-label">Projects done</div>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-item">
+                <div class="stat-value">200+</div>
+                <div class="stat-label">LeetCode solved</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT HERO COLUMN (Circular Avatar Backdrop Matching Reference) -->
+          <div class="hero-avatar-wrapper">
+            <div class="avatar-glow-ring"></div>
+            <div class="avatar-circle-container">
+              <img src="assets/profile-image.jpg" alt="Arjhun O - Fullstack Developer" class="hero-avatar-img">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section class="services-section" id="services">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2 class="section-title">My Services</h2>
+          <p class="section-subtitle">Delivering high-performance, responsive full-stack solutions tailored for seamless user experiences.</p>
+        </div>
+
+        <div class="services-grid">
+          
+          <div class="service-card">
+            <div class="service-icon-wrap">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+            <h3 class="service-title">Full-Stack Web Apps</h3>
+            <p class="service-desc">Building end-to-end web applications with PHP, MySQL, React.js, and Firebase. Responsive layouts with clean CRUD flows and smooth integrations.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon-wrap">
+              <i class="fas fa-server"></i>
+            </div>
+            <h3 class="service-title">API &amp; Backend Engineering</h3>
+            <p class="service-desc">Designing robust RESTful APIs, optimized database schemas, query performance tuning, and secure data sync pipelines.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon-wrap">
+              <i class="fas fa-chart-pie"></i>
+            </div>
+            <h3 class="service-title">AI &amp; Data Analytics</h3>
+            <p class="service-desc">Creating intelligent visualization tools like MinVis with offline AI analysis (Ollama), interactive dashboards, and Recharts metrics.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT ME AND EDUCATION SECTION -->
+    <section class="about-section" id="about">
+      <div class="container">
+        <div class="about-grid">
+          
+          <!-- ABOUT LEFT CONTENT -->
+          <div class="about-text-col">
+            <div class="section-header">
+              <h2 class="section-title">About Me</h2>
+            </div>
+            <p class="about-bio">
+              I am a dedicated <strong>Full-Stack Developer</strong> with a solid foundation in Computer Science Engineering. I specialize in crafting clean, database-driven applications using <strong>PHP, MySQL, JavaScript, React.js, and Firebase</strong>.
+            </p>
+            <p class="about-bio">
+              With experience as a <strong>PHP Developer Intern at Corpindex</strong> and <strong>Full Stack Intern at Code Alpha</strong>, I excel at bridging frontend user experiences with performant backend APIs. I am also an avid algorithmic problem solver with <strong>200+ solved LeetCode challenges</strong>.
+            </p>
+
+            <!-- Education Box -->
+            <div class="education-card">
+              <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
+              <div class="edu-details">
+                <div class="edu-degree">B.E. Computer Science Engineering (CSE)</div>
+                <div class="edu-college">PSNA College of Engineering and Technology</div>
+                <div class="edu-meta">
+                  <span class="edu-badge"><i class="fas fa-star"></i> CGPA: 7.8</span>
+                  <span class="edu-school">HSC: StJohn's Metric Higher Secondary School</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Skills Chips -->
+            <div class="tech-stack-chips">
+              <span class="chip">PHP</span>
+              <span class="chip">MySQL</span>
+              <span class="chip">React.js</span>
+              <span class="chip">Firebase</span>
+              <span class="chip">JavaScript</span>
+              <span class="chip">Tailwind CSS</span>
+              <span class="chip">REST APIs</span>
+              <span class="chip">PeerJS / WebRTC</span>
+              <span class="chip">Supabase</span>
+              <span class="chip">Java</span>
+              <span class="chip">Python</span>
+              <span class="chip">Ollama AI</span>
+            </div>
+          </div>
+
+          <!-- LEETCODE AND PROBLEM SOLVING MATRIX RIGHT COL -->
+          <div class="leetcode-card-col">
+            <div class="leetcode-box">
+              <div class="leetcode-header">
+                <div class="leetcode-title"><i class="fas fa-terminal"></i> LeetCode Matrix</div>
+                <span class="leetcode-total">200+ Solved</span>
+              </div>
+              <p class="leetcode-subtitle">Problem solving proficiency in Java, Python, Data Structures &amp; Algorithms.</p>
+
+              <!-- Progress Bars -->
+              <div class="leetcode-progress-group">
+                <div class="lc-bar-item">
+                  <div class="lc-bar-info">
+                    <span>Easy Problems</span>
+                    <span class="lc-count text-easy">85 / 100 (85%)</span>
+                  </div>
+                  <div class="lc-bar-track">
+                    <div class="lc-bar-fill fill-easy" style="width: 85%"></div>
+                  </div>
+                </div>
+
+                <div class="lc-bar-item">
+                  <div class="lc-bar-info">
+                    <span>Medium Problems</span>
+                    <span class="lc-count text-medium">102 / 150 (68%)</span>
+                  </div>
+                  <div class="lc-bar-track">
+                    <div class="lc-bar-fill fill-medium" style="width: 68%"></div>
+                  </div>
+                </div>
+
+                <div class="lc-bar-item">
+                  <div class="lc-bar-info">
+                    <span>Hard Problems</span>
+                    <span class="lc-count text-hard">13 / 50 (26%)</span>
+                  </div>
+                  <div class="lc-bar-track">
+                    <div class="lc-bar-fill fill-hard" style="width: 26%"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Extra LeetCode Link CTA -->
+              <a href="https://leetcode.com/u/arjhun_03/" target="_blank" rel="noopener" class="btn btn-leetcode-profile">
+                <i class="fas fa-external-link-alt"></i> View LeetCode Profile (@arjhun_03)
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO / PROJECTS SHOWCASE SECTION -->
+    <section class="portfolio-section" id="portfolio">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2 class="section-title">Portfolio Projects</h2>
+          <p class="section-subtitle">Explore key full-stack systems, AI visualization tools, real-time web apps, and internship highlights.</p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="portfolio-filter-tabs">
+          <button class="filter-tab active" data-filter="all">All</button>
+          <button class="filter-tab" data-filter="fullstack">Full-Stack</button>
+          <button class="filter-tab" data-filter="frontend">JavaScript/UI</button>
+          <button class="filter-tab" data-filter="react">React &amp; WebRTC</button>
+          <button class="filter-tab" data-filter="php">PHP &amp; MySQL</button>
+          <button class="filter-tab" data-filter="ai-3d">AI &amp; 3D</button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid" id="projects-grid">
+
+          <!-- PROJECT 1: MinVis -->
+          <div class="project-card" data-category="fullstack php ai-3d">
+            <div class="project-img-wrapper">
+              <img src="assets/thumbnails/minvis_user.png" alt="MinVis Data Visualization" class="project-thumbnail">
+              <div class="project-badge">AI + PHP</div>
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">MinVis</h3>
+              <div class="project-subtitle">Minimal Intelligent Virtual Interactive System</div>
+              <p class="project-description">Full-stack data visualization platform with dynamic frontend-backend interaction and offline AI analysis powered by local Ollama models.</p>
+              <div class="project-tags-list">
+                <span>PHP</span><span>MySQL</span><span>JavaScript</span><span>Ollama</span>
+              </div>
+              <div class="project-card-footer">
+                <button class="btn btn-inspect" data-project="minvis">Inspect Details</button>
+                <a href="https://github.com/arjhun03" target="_blank" rel="noopener" class="project-icon-link" title="GitHub Repo"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- PROJECT 2: FinTrack -->
+          <div class="project-card" data-category="fullstack react">
+            <div class="project-img-wrapper">
+              <img src="assets/thumbnails/fintrack.png" alt="FinTrack Dashboard" class="project-thumbnail">
+              <div class="project-badge">React + Firebase</div>
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">FinTrack</h3>
+              <div class="project-subtitle">Personal Finance Tracker</div>
+              <p class="project-description">Real-time income and expense dashboard featuring transaction history, spending analytics, and Firebase-backed state management.</p>
+              <div class="project-tags-list">
+                <span>React.js</span><span>Firebase</span><span>Tailwind</span><span>Recharts</span>
+              </div>
+              <div class="project-card-footer">
+                <button class="btn btn-inspect" data-project="fintrack">Inspect Details</button>
+                <a href="https://expense-tracker-beta-five-27.vercel.app/login" target="_blank" rel="noopener" class="project-icon-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                <a href="https://github.com/arjhun03/FinTrack" target="_blank" rel="noopener" class="project-icon-link" title="GitHub Repo"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- PROJECT 3: El Dorado Casino -->
+          <div class="project-card" data-category="fullstack react">
+            <div class="project-img-wrapper">
+              <img src="assets/thumbnails/eldorado_user3.png" alt="El Dorado Casino Web App" class="project-thumbnail">
+              <div class="project-badge">React 19 + PeerJS</div>
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">El Dorado Casino</h3>
+              <div class="project-subtitle">Full-Stack Multiplayer Web App</div>
+              <p class="project-description">Peer-to-peer multiplayer gaming platform built with WebRTC, real-time auth data sync via Supabase, Zustand, and admin dashboard controls.</p>
+              <div class="project-tags-list">
+                <span>React 19</span><span>PeerJS</span><span>Supabase</span><span>Zustand</span>
+              </div>
+              <div class="project-card-footer">
+                <button class="btn btn-inspect" data-project="eldorado">Inspect Details</button>
+                <a href="https://github.com/arjhun03/El-Dorado-Casino" target="_blank" rel="noopener" class="project-icon-link" title="GitHub Repo"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- PROJECT 4: Aju's Gameboy 3D Portfolio -->
+          <div class="project-card" data-category="ai-3d">
+            <div class="project-img-wrapper">
+              <img src="assets/thumbnails/gameboy_user2.png" alt="3D Gameboy Portfolio" class="project-thumbnail">
+              <div class="project-badge">3D WebGL</div>
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Aju's 3D Gameboy Portfolio</h3>
+              <div class="project-subtitle">Interactive 3D Gamer Experience</div>
+              <p class="project-description">Interactive 3D Gameboy model rendered in WebGL with custom baked textures, camera orbit animations, and retro screen apps.</p>
+              <div class="project-tags-list">
+                <span>Three.js</span><span>GSAP</span><span>GLTF</span><span>WebGL</span>
+              </div>
+              <div class="project-card-footer">
+                <button class="btn btn-inspect" data-project="gameboy">Inspect Details</button>
+                <a href="https://idas-gameboy.netlify.app" target="_blank" rel="noopener" class="project-icon-link" title="Live Site"><i class="fas fa-external-link-alt"></i></a>
+                <a href="https://github.com/Arjhun03/3D-portfolio" target="_blank" rel="noopener" class="project-icon-link" title="GitHub Repo"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- PROJECT 5: Corpindex Internship -->
+          <div class="project-card" data-category="php">
+            <div class="project-img-wrapper">
+              <img src="assets/thumbnails/corpindex_user.png" alt="Corpindex Internship" class="project-thumbnail">
+              <div class="project-badge">Internship</div>
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Corpindex</h3>
+              <div class="project-subtitle">PHP Developer Intern</div>
+              <p class="project-description">Developed RESTful APIs, optimized app query performance, resolved production bugs, and shipped full-stack features using PHP &amp; MySQL.</p>
+              <div class="project-tags-list">
+                <span>PHP</span><span>MySQL</span><span>REST APIs</span><span>CRUD</span>
+              </div>
+              <div class="project-card-footer">
+                <button class="btn btn-inspect" data-project="corpindex">Inspect Details</button>
+                <a href="https://github.com/arjhun03" target="_blank" rel="noopener" class="project-icon-link" title="GitHub Repo"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- PROJECT 6: Code Alpha Internship -->
+          <div class="project-card" data-category="fullstack php">
+            <div class="project-img-wrapper">
+              <img src="assets/thumbnails/codealpha_user.png" alt="Code Alpha Internship" class="project-thumbnail">
+              <div class="project-badge">Internship</div>
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Code Alpha</h3>
+              <div class="project-subtitle">Full Stack Intern</div>
+              <p class="project-description">Engineered responsive UI components, implemented database CRUD functionality, and integrated web fundamentals for scalable applications.</p>
+              <div class="project-tags-list">
+                <span>HTML</span><span>CSS</span><span>JavaScript</span><span>PHP</span>
+              </div>
+              <div class="project-card-footer">
+                <button class="btn btn-inspect" data-project="codealpha">Inspect Details</button>
+                <a href="https://github.com/arjhun03" target="_blank" rel="noopener" class="project-icon-link" title="GitHub Repo"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- PROJECT 7: Code Breaker Game -->
+          <div class="project-card" data-category="frontend">
+            <div class="project-img-wrapper">
+              <img src="assets/thumbnails/codebreaker_user.png" alt="Code Breaker Game" class="project-thumbnail">
+              <div class="project-badge">JS Game</div>
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Code Breaker Game</h3>
+              <div class="project-subtitle">Password Digit Guessing Game</div>
+              <p class="project-description">JavaScript-based guessing game where players crack the last digit of a password within 10 tries.</p>
+              <div class="project-tags-list">
+                <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Game Logic</span>
+              </div>
+              <div class="project-card-footer">
+                <button class="btn btn-inspect" data-project="codebreaker">Inspect Details</button>
+                <a href="https://lnkd.in/grzdKagk" target="_blank" rel="noopener" class="project-icon-link" title="Play Game"><i class="fas fa-external-link-alt"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- PROJECT 8: Cyberpunk Quiz App -->
+          <div class="project-card" data-category="frontend">
+            <div class="project-img-wrapper">
+              <img src="assets/thumbnails/cyberquiz_user.png" alt="Cyberpunk Quiz App" class="project-thumbnail">
+              <div class="project-badge">Quiz UI</div>
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Cyberpunk Quiz App</h3>
+              <div class="project-subtitle">Neon-Styled Interactive Quiz</div>
+              <p class="project-description">Interactive quiz experience with cyberpunk visuals, responsive screens, and JavaScript answer flow.</p>
+              <div class="project-tags-list">
+                <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Responsive UI</span>
+              </div>
+              <div class="project-card-footer">
+                <button class="btn btn-inspect" data-project="cyberquiz">Inspect Details</button>
+                <a href="https://lnkd.in/gSKy-td6" target="_blank" rel="noopener" class="project-icon-link" title="View App"><i class="fas fa-external-link-alt"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- PROJECT 9: E-Commerce Store -->
+          <div class="project-card" data-category="fullstack frontend">
+            <div class="project-img-wrapper">
+              <img src="assets/thumbnails/ecommerce_user.png" alt="E-Commerce Store" class="project-thumbnail">
+              <div class="project-badge">Storefront</div>
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">E-Commerce Store</h3>
+              <div class="project-subtitle">Product, Cart and Checkout Flow</div>
+              <p class="project-description">Simple full-stack store with product listings, cart interactions, and checkout flow using HTML and Express.js.</p>
+              <div class="project-tags-list">
+                <span>HTML</span><span>CSS</span><span>Express.js</span><span>Cart Flow</span>
+              </div>
+              <div class="project-card-footer">
+                <button class="btn btn-inspect" data-project="ecommerce">Inspect Details</button>
+                <a href="https://lnkd.in/gm-TEU_H" target="_blank" rel="noopener" class="project-icon-link" title="View Project"><i class="fas fa-external-link-alt"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- PROJECT 11: FLAMES -->
+          <div class="project-card" data-category="frontend">
+            <div class="project-img-wrapper">
+              <img src="assets/thumbnails/flames_user.png" alt="FLAMES Relationship Game" class="project-thumbnail">
+              <div class="project-badge">JS Game</div>
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">FLAMES</h3>
+              <div class="project-subtitle">Relationship Status Game</div>
+              <p class="project-description">JavaScript-based FLAMES game that detects relationship status between two names with a playful frontend flow.</p>
+              <div class="project-tags-list">
+                <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Game Logic</span>
+              </div>
+              <div class="project-card-footer">
+                <button class="btn btn-inspect" data-project="flames">Inspect Details</button>
+                <a href="https://arjhun03.github.io/FLAME/" target="_blank" rel="noopener" class="project-icon-link" title="Play Game"><i class="fas fa-external-link-alt"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- PROJECT 12: Fraction Order Solver -->
+          <div class="project-card" data-category="frontend">
+            <div class="project-img-wrapper">
+              <img src="assets/thumbnails/fractionsolver_user2.png" alt="Fraction Order Solver" class="project-thumbnail">
+              <div class="project-badge">Math JS</div>
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Fraction Order Solver</h3>
+              <div class="project-subtitle">JavaScript Math Challenge</div>
+              <p class="project-description">Math challenge tool that compares and orders fractions using JavaScript logic and clear UI feedback.</p>
+              <div class="project-tags-list">
+                <span>JavaScript</span><span>Math Logic</span><span>DOM</span><span>UI</span>
+              </div>
+              <div class="project-card-footer">
+                <button class="btn btn-inspect" data-project="fractionsolver">Inspect Details</button>
+                <a href="https://lnkd.in/gudHPB8Q" target="_blank" rel="noopener" class="project-icon-link" title="Try It"><i class="fas fa-external-link-alt"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- PROJECT 13: Data Management System -->
+          <div class="project-card" data-category="fullstack php">
+            <div class="project-img-wrapper">
+              <img src="assets/thumbnails/datamanagement_user2.png" alt="Data Management System" class="project-thumbnail">
+              <div class="project-badge">CI4 CRUD</div>
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Data Management System</h3>
+              <div class="project-subtitle">CorpIndex Backend CRUD App</div>
+              <p class="project-description">CodeIgniter 4 backend data management app for CorpIndex with flow handling, business logic, and CRUD operations.</p>
+              <div class="project-tags-list">
+                <span>PHP</span><span>CodeIgniter 4</span><span>MySQL</span><span>CRUD</span>
+              </div>
+              <div class="project-card-footer">
+                <button class="btn btn-inspect" data-project="datamanagement">Inspect Details</button>
+                <a href="https://github.com/arjhun010905/data-management" target="_blank" rel="noopener" class="project-icon-link" title="View Project"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+
+    <!-- Contact scroll anchor — do not remove -->
+    <div id="contact" style="position:relative; top:-70px; visibility:hidden;"></div>
+
+    <!-- CONTACT SECTION -->
+    <!-- <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2 class="section-title">Contact Me</h2>
+          <p class="section-subtitle">Reach out directly via the mail message box below or through phone and social channels.</p>
+        </div>
+
+        2 SIDE-BY-SIDE CARDS SPANNING THE FULL 3-CARD WIDTH (1200px)
+         <div class="contact-cards-grid"> -->
+          <!-- LEFT CARD: Contact Details & Info -->
+          <!-- <div class="contact-card-box contact-info-card">
+            <div class="contact-status-badge"><i class="fas fa-circle-notch fa-spin"></i> Available for Opportunities</div>
+            <h3 class="contact-box-title">Let's Work Together</h3>
+            <p class="contact-subtext">Whether you have a project idea, a job opportunity, or just want to connect — my inbox is open.</p>
+            
+            <div class="contact-details-list">
+              <div class="contact-detail-item">
+                <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                <div>
+                  <div class="contact-label">Phone Number</div>
+                  <a href="tel:8610051714" class="contact-val email-link">+91 8610051714</a>
+                </div>
+              </div>
+
+              <div class="contact-detail-item">
+                <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                <div>
+                  <div class="contact-label">Personal Email</div>
+                  <a href="mailto:arjhun010905@gmail.com" class="contact-val email-link">arjhun010905@gmail.com</a>
+                </div>
+              </div>
+
+              <div class="contact-detail-item">
+                <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <div>
+                  <div class="contact-label">Location</div>
+                  <div class="contact-val">Tamil Nadu, India</div>
+                </div>
+              </div>
+            </div>
+
+            Quick Action Links & Socials -->
+            
+          </div>
+
+.........................................................................................................................................................................................................................................................
+          <h4 class="contact-mailbox-label"><i class="fas fa-envelope"></i> Drop a Message</h4>
+
+
+         
+          <div class="contact-card-box contact-mailbox-card">
+             <div class="mailbox-header-bar">
+              <div class="mailbox-dots">
+                <div class="dot dot-red"></div>
+                <div class="dot dot-yellow"></div>
+                <div class="dot dot-green"></div>
+              </div>
+              <div class="mailbox-title"><i class="fas fa-paper-plane"></i> Send a Message</div>
+            </div>
+
+            <h3 class="mailbox-card-heading">Send Me a Message</h3>
+            <p class="mailbox-card-subtext">Fill in the form and I'll get back to you as soon as possible.</p>
+
+            <form class="contact-form" id="contact-form" onsubmit="event.preventDefault(); alert('Message simulation sent! You can also email directly to arjhun010905@gmail.com');">
+              <div style="display: flex; flex-direction: column; gap: 1rem; height: 100%;">
+                <input type="text" placeholder="Your Name" required style="background: rgba(255,255,255,0.04); border: 1px solid var(--border-light); padding: 0.8rem 1rem; border-radius: var(--radius-sm); color: #fff; outline: none;" id="form-name">
+                <input type="email" placeholder="Your Email" required style="background: rgba(255,255,255,0.04); border: 1px solid var(--border-light); padding: 0.8rem 1rem; border-radius: var(--radius-sm); color: #fff; outline: none;" id="form-email">
+                <textarea rows="5" placeholder="Your Message" required style="background: rgba(255,255,255,0.04); border: 1px solid var(--border-light); padding: 0.8rem 1rem; border-radius: var(--radius-sm); color: #fff; outline: none; resize: vertical;" id="form-msg"></textarea>
+                <button type="submit" class="btn btn-primary" id="form-submit-btn"><i class="fas fa-paper-plane"></i> Send Message</button>
+              </div>
+            </form>
+          </div> 
+
+        </div><!-- end contact-cards-grid -->
+      </div><!-- end container -->
+    </section><!-- end contact-section -->
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-content text-center">
+      <div class="footer-brand">ARJHUN<span class="orange-text">.O</span></div>
+      <p class="footer-copy">© 2026 Arjhun O. Designed &amp; Developed with Passion for Code.</p>
+
+      <div class="footer-actions">
+        <a href="tel:8610051714" class="btn btn-outline-small"><i class="fas fa-phone-alt"></i> Call Now</a>
+        <a href="mailto:arjhun010905@gmail.com" class="btn btn-outline-small"><i class="fas fa-envelope"></i> Email Direct</a>
+      </div>
+
+      <div class="footer-socials">
+        <a href="https://github.com/arjhun03" target="_blank" rel="noopener" class="social-circle-btn" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/arjhun-o-06ab8b334" target="_blank" rel="noopener" class="social-circle-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://leetcode.com/u/arjhun_03/" target="_blank" rel="noopener" class="social-circle-btn" title="LeetCode"><i class="fas fa-code"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- PROJECT INSPECT MODAL -->
+  <div class="modal-overlay" id="project-modal">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="modal-close">&times;</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <!-- 3D GAMEBOY ARCADE MODAL -->
+  <div class="modal-overlay" id="gameboy-modal">
+    <div class="gameboy-modal-card">
+      <button class="modal-close-btn" id="gameboy-modal-close">&times;</button>
+      <div class="gameboy-screen-wrapper">
+        <div class="gameboy-screen-header">
+          <span class="gb-title">AJU'S GAMEBOY ARCADE</span>
+          <span class="gb-status">BATTERY ● HIGH</span>
+        </div>
+        <div class="gameboy-canvas-area" id="gb-canvas-area">
+          <canvas id="gameboy-mini-canvas" width="400" height="300"></canvas>
+        </div>
+        <div class="gameboy-controls-row">
+          <div class="gb-dpad">
+            <button class="gb-btn gb-up" id="gb-up">▲</button>
+            <button class="gb-btn gb-left" id="gb-left">◀</button>
+            <button class="gb-btn gb-right" id="gb-right">▶</button>
+            <button class="gb-btn gb-down" id="gb-down">▼</button>
+          </div>
+          <div class="gb-action-btns">
+            <button class="gb-ab-btn gb-b" id="gb-btn-b">B</button>
+            <button class="gb-ab-btn gb-a" id="gb-btn-a">A</button>
+          </div>
+        </div>
+        <div class="gameboy-easter-trigger">
+          <button class="btn btn-danger-pill" id="trigger-bunny-virus"><i class="fas fa-bug"></i> Trigger Bunny Virus Easter Egg</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BUNNY VIRUS EASTER EGG OVERLAY -->
+  <div class="overlay-easter-egg" id="bunny-virus-overlay">
+    <div class="bsod-card">
+      <div class="bsod-face">:(</div>
+      <h2 class="bsod-title">BUNNY VIRUS DETECTED</h2>
+      <p class="bsod-text">Your system has encountered an overflow of cute digital bunnies!</p>
+      <div class="bunny-images-row">
+        <img src="assets/bunnyVirusImages/bunnyVirus.png" alt="Bunny Virus" class="bunny-img animate-bounce" onerror="this.src='assets/thumbnails/leetcode.png'">
+        <img src="assets/bunnyVirusImages/bunnyVirusWarning.png" alt="Warning" class="bunny-img animate-pulse" onerror="this.src='assets/thumbnails/education.png'">
+      </div>
+      <div class="bsod-actions">
+        <button class="btn btn-success-pill" id="clear-bunny-virus"><i class="fas fa-shield-alt"></i> Purge Virus &amp; Win</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMMAND PALETTE (CTRL + K) -->
+  <div class="cmd-palette-overlay" id="cmd-palette">
+    <div class="cmd-palette-card">
+      <div class="cmd-input-wrap">
+        <i class="fas fa-search"></i>
+        <input type="text" id="cmd-input" placeholder="Type a command or jump to section..." autocomplete="off">
+        <span class="cmd-esc">ESC</span>
+      </div>
+      <div class="cmd-results" id="cmd-results">
+        <div class="cmd-item" data-action="home"><i class="fas fa-home"></i> Jump to Home</div>
+        <div class="cmd-item" data-action="services"><i class="fas fa-cog"></i> View Services</div>
+        <div class="cmd-item" data-action="about"><i class="fas fa-user"></i> About Me &amp; LeetCode</div>
+        <div class="cmd-item" data-action="portfolio"><i class="fas fa-folder-open"></i> Portfolio Projects</div>
+        <div class="cmd-item" data-action="contact"><i class="fas fa-envelope"></i> Contact Arjhun</div>
+        <div class="cmd-item" data-action="resume"><i class="fas fa-download"></i> Download Resume PDF</div>
+        <div class="cmd-item" data-action="gameboy"><i class="fas fa-gamepad"></i> Launch 3D Gameboy Arcade</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main JavaScript File -->
+  <script src="main.js"></script>
+</body>
+</html>
