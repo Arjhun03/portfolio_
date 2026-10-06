@@ -47,16 +47,13 @@
       </ul>
 
       <div class="nav-actions">
-        <button class="icon-btn" id="sound-toggle-btn" title="Toggle Sound Effects">
-          <i class="fas fa-volume-up" id="sound-icon"></i>
-        </button>
-        <button class="icon-btn" id="cmd-btn" title="Command Palette (Ctrl+K)">
+        <button type="button" class="icon-btn" id="cmd-btn" title="Command Palette (Ctrl+K)">
           <i class="fas fa-terminal"></i>
         </button>
         <a href="#contact" class="btn btn-hire" id="nav-hire-btn">Contact Me</a>
       </div>
 
-      <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Toggle Navigation">
+      <button type="button" class="mobile-menu-toggle" id="mobile-toggle" aria-label="Toggle Navigation">
         <i class="fas fa-bars"></i>
       </button>
     </nav>
@@ -67,7 +64,7 @@
     <section class="hero-section" id="home">
       <div class="container">
         <div class="hero-grid">
-          
+
           <!-- LEFT HERO COLUMN -->
           <div class="hero-text-content">
             <div class="hero-greeting">Hi I am</div>
@@ -143,7 +140,6 @@
         </div>
 
         <div class="services-grid">
-          
           <div class="service-card">
             <div class="service-icon-wrap">
               <i class="fas fa-laptop-code"></i>
@@ -176,7 +172,6 @@
     <section class="about-section" id="about">
       <div class="container">
         <div class="about-grid">
-          
           <!-- ABOUT LEFT CONTENT -->
           <div class="about-text-col">
             <div class="section-header">
@@ -280,22 +275,35 @@
           <p class="section-subtitle">Explore key full-stack systems, AI visualization tools, real-time web apps, and internship highlights.</p>
         </div>
 
-        <!-- Filter Tabs -->
-        <div class="portfolio-filter-tabs">
-          <button class="filter-tab active" data-filter="all">All</button>
-          <button class="filter-tab" data-filter="fullstack">Full-Stack</button>
-          <button class="filter-tab" data-filter="frontend">JavaScript/UI</button>
-          <button class="filter-tab" data-filter="react">React &amp; WebRTC</button>
-          <button class="filter-tab" data-filter="php">PHP &amp; MySQL</button>
-          <button class="filter-tab" data-filter="ai-3d">AI &amp; 3D</button>
-        </div>
+        <!-- Controls Bar: Filter Tabs & Smooth Motion Navigation Controls -->
+        <div class="projects-controls-bar">
+          <div class="portfolio-filter-tabs">
+            <button type="button" class="filter-tab active" data-filter="all">All</button>
+            <button type="button" class="filter-tab" data-filter="fullstack">Full-Stack</button>
+            <button type="button" class="filter-tab" data-filter="frontend">JavaScript/UI</button>
+            <button type="button" class="filter-tab" data-filter="react">React &amp; WebRTC</button>
+            <button type="button" class="filter-tab" data-filter="php">PHP &amp; MySQL</button>
+            <button type="button" class="filter-tab" data-filter="ai-3d">AI &amp; 3D</button>
+          </div>
+<!--
+          <div class="carousel-nav-controls">
+            <button type="button" class="carousel-arrow-btn" id="carousel-prev-btn" title="Slide Left" aria-label="Slide Left">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button type="button" class="carousel-arrow-btn" id="carousel-next-btn" title="Slide Right" aria-label="Slide Right">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div> -->
 
-        <!-- Projects Grid -->
-        <div class="projects-grid" id="projects-grid">
+        <!-- Smooth Moving Projects Showcase Viewport -->
+        <div class="projects-carousel-container">
+          <div class="projects-carousel-wrapper" id="projects-carousel-wrapper">
+            <div class="projects-grid" id="projects-grid">
 
           <!-- PROJECT 1: MinVis -->
           <div class="project-card" data-category="fullstack php ai-3d">
-            <div class="project-img-wrapper">
+           <div class="project-img-wrapper">
               <img src="assets/thumbnails/minvis_user.png" alt="MinVis Data Visualization" class="project-thumbnail">
               <div class="project-badge">AI + PHP</div>
             </div>
@@ -533,23 +541,28 @@
                 <a href="https://github.com/arjhun010905/data-management" target="_blank" rel="noopener" class="project-icon-link" title="View Project"><i class="fab fa-github"></i></a>
               </div>
             </div>
-          </div>
+          </div> <!-- end project-card 13 -->
+
+            </div><!-- end projects-grid -->
+          </div><!-- end projects-carousel-wrapper -->
+        </div><!-- end projects-carousel-container -->
+      </div><!-- end container -->
+    </section><!-- end portfolio-section -->
 
     <!-- Contact scroll anchor — do not remove -->
     <div id="contact" style="position:relative; top:-70px; visibility:hidden;"></div>
 
     <!-- CONTACT SECTION -->
-    <!-- <section class="contact-section" id="contact">
+    <section class="contact-section">
       <div class="container">
         <div class="section-header text-center">
           <h2 class="section-title">Contact Me</h2>
           <p class="section-subtitle">Reach out directly via the mail message box below or through phone and social channels.</p>
         </div>
 
-        2 SIDE-BY-SIDE CARDS SPANNING THE FULL 3-CARD WIDTH (1200px)
-         <div class="contact-cards-grid"> -->
+        <div class="contact-cards-grid">
           <!-- LEFT CARD: Contact Details & Info -->
-          <!-- <div class="contact-card-box contact-info-card">
+          <div class="contact-card-box contact-info-card">
             <div class="contact-status-badge"><i class="fas fa-circle-notch fa-spin"></i> Available for Opportunities</div>
             <h3 class="contact-box-title">Let's Work Together</h3>
             <p class="contact-subtext">Whether you have a project idea, a job opportunity, or just want to connect — my inbox is open.</p>
@@ -579,18 +592,11 @@
                 </div>
               </div>
             </div>
-
-            Quick Action Links & Socials -->
-            
           </div>
 
-.........................................................................................................................................................................................................................................................
-          <h4 class="contact-mailbox-label"><i class="fas fa-envelope"></i> Drop a Message</h4>
-
-
-         
+          <!-- RIGHT CARD: Mailbox Send Message Form -->
           <div class="contact-card-box contact-mailbox-card">
-             <div class="mailbox-header-bar">
+            <div class="mailbox-header-bar">
               <div class="mailbox-dots">
                 <div class="dot dot-red"></div>
                 <div class="dot dot-yellow"></div>

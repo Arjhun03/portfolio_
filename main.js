@@ -179,29 +179,154 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* --------------------------------------------------------------------------
-     4. Portfolio Filter Tabs
+     4. Smooth Moving Portfolio Showcase Carousel & Filter Controller
      -------------------------------------------------------------------------- */
+  const carouselWrapper = document.getElementById('projects-carousel-wrapper');
+  const projectsGrid = document.getElementById('projects-grid');
   const filterTabs = document.querySelectorAll('.filter-tab');
-  const projectCards = document.querySelectorAll('.project-card');
+  const prevBtn = document.getElementById('carousel-prev-btn');
+  const nextBtn = document.getElementById('carousel-next-btn');
 
-  filterTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      filterTabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
+  let isAutoPlaying = true;
+  let isHovered = false;
+  let isDragging = false;
+  let isModalOpen = false;
+  let startX = 0;
+  let startScrollLeft = 0;
+  let dragDistance = 0;
+  const scrollSpeed = 0.85; // smooth gliding pace (approx 50px/sec)
+  let halfTrackWidth = 0;
 
-      const filterValue = tab.getAttribute('data-filter');
+  if (projectsGrid && carouselWrapper) {
+    // 4a. Duplicate cards for seamless infinite loop from one side to another
+    const originalCards = Array.from(projectsGrid.querySelectorAll('.project-card'));
+    originalCards.forEach(card => {
+      const clone = card.cloneNode(true);
+      clone.setAttribute('data-is-clone', 'true');
+      projectsGrid.appendChild(clone);
+    });
 
-      projectCards.forEach(card => {
-        const categories = card.getAttribute('data-category');
-        if (filterValue === 'all' || categories.includes(filterValue)) {
-          card.style.display = 'flex';
-          card.style.animation = 'fadeIn 0.4s ease forwards';
-        } else {
-          card.style.display = 'none';
+    // 4b. Calculate the half-width of the track for invisible loop reset
+    function calculateHalfWidth() {
+      const visibleOriginalCards = projectsGrid.querySelectorAll('.project-card:not([data-is-clone="true"])');
+      let total = 0;
+      let count = 0;
+      visibleOriginalCards.forEach(card => {
+        if (card.style.display !== 'none') {
+          total += card.offsetWidth;
+          count++;
         }
       });
+      // 2rem gap = 32px between cards
+      if (count > 0) {
+        total += (count * 32);
+      }
+      halfTrackWidth = total > 0 ? total : projectsGrid.scrollWidth / 2;
+    }
+
+    // Run initial calculation after DOM styling settles
+    setTimeout(calculateHalfWidth, 120);
+    window.addEventListener('resize', calculateHalfWidth);
+
+    // 4c. Continuous automated 60fps auto-gliding loop (Right-to-Left)
+    function stepScroller() {
+      if (isAutoPlaying && !isHovered && !isDragging && !isModalOpen) {
+        carouselWrapper.scrollLeft += scrollSpeed;
+
+        if (halfTrackWidth > 0 && carouselWrapper.scrollLeft >= halfTrackWidth) {
+          carouselWrapper.scrollLeft -= halfTrackWidth;
+        }
+      }
+      requestAnimationFrame(stepScroller);
+    }
+    requestAnimationFrame(stepScroller);
+
+    // 4d. Pause on hover so user can easily read, inspect, or click links
+    carouselWrapper.addEventListener('mouseenter', () => {
+      isHovered = true;
     });
-  });
+
+    carouselWrapper.addEventListener('mouseleave', () => {
+      isHovered = false;
+      if (isDragging) {
+        isDragging = false;
+        carouselWrapper.classList.remove('is-dragging');
+      }
+    });
+
+    // 4e. Left & Right Navigation Arrows alone (Slide Left / Slide Right)
+    prevBtn?.addEventListener('click', () => {
+      const cardStep = 380;
+      carouselWrapper.scrollBy({ left: -cardStep, behavior: 'smooth' });
+      playTone(480, 'sine', 0.08);
+    });
+
+    nextBtn?.addEventListener('click', () => {
+      const cardStep = 380;
+      carouselWrapper.scrollBy({ left: cardStep, behavior: 'smooth' });
+      playTone(540, 'sine', 0.08);
+    });
+
+    // 4g. Smooth Mouse Dragging & Touch Swiping
+    carouselWrapper.addEventListener('mousedown', (e) => {
+      if (e.target.closest('button, a')) return;
+      isDragging = true;
+      carouselWrapper.classList.add('is-dragging');
+      startX = e.pageX - carouselWrapper.offsetLeft;
+      startScrollLeft = carouselWrapper.scrollLeft;
+      dragDistance = 0;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      e.preventDefault();
+      const x = e.pageX - carouselWrapper.offsetLeft;
+      const walk = (x - startX);
+      carouselWrapper.scrollLeft = startScrollLeft - walk;
+      dragDistance = Math.abs(walk);
+    });
+
+    window.addEventListener('mouseup', () => {
+      if (isDragging) {
+        isDragging = false;
+        carouselWrapper.classList.remove('is-dragging');
+      }
+    });
+
+    // Cancel card button clicks only if user dragged significantly
+    carouselWrapper.addEventListener('click', (e) => {
+      if (dragDistance > 8) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    }, true);
+
+    // 4h. Filter Tabs (Preserves functionality on all original & cloned project cards)
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        filterTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const filterValue = tab.getAttribute('data-filter');
+        const allCards = projectsGrid.querySelectorAll('.project-card');
+
+        allCards.forEach(card => {
+          const categories = card.getAttribute('data-category') || '';
+          if (filterValue === 'all' || categories.includes(filterValue)) {
+            card.style.display = 'flex';
+            card.style.animation = 'fadeIn 0.4s ease forwards';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        // Reset scroll position and recalculate width for seamless loop
+        carouselWrapper.scrollLeft = 0;
+        calculateHalfWidth();
+        playTone(440, 'sine', 0.08);
+      });
+    });
+  }
 
   /* --------------------------------------------------------------------------
      5. Project Inspection Detail Modal
@@ -340,40 +465,47 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  document.querySelectorAll('.btn-inspect').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const projKey = btn.getAttribute('data-project');
-      const data = projectDetails[projKey];
-      if (!data) return;
+  // Event delegation for Inspect Details buttons (works on both original & cloned cards)
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.btn-inspect');
+    if (!btn) return;
 
-      modalContent.innerHTML = `
-        <img src="${data.img}" alt="${data.title}" style="width: 100%; height: 220px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: 1.5rem; border: 1px solid var(--border-light);">
-        <h2 style="font-family: var(--font-heading); font-size: 1.75rem; margin-bottom: 0.25rem;">${data.title}</h2>
-        <div style="color: var(--primary-orange); font-weight: 600; font-size: 0.95rem; margin-bottom: 1rem;">${data.subtitle}</div>
-        <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem;">${data.description}</p>
-        <div style="margin-bottom: 1.5rem;">
-          <h4 style="margin-bottom: 0.5rem; font-size: 0.95rem;">Key Highlights:</h4>
-          <ul style="padding-left: 1.25rem; color: var(--text-secondary); font-size: 0.9rem;">
-            ${data.highlights.map(h => `<li style="margin-bottom: 0.25rem;">${h}</li>`).join('')}
-          </ul>
-        </div>
-        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-          ${data.github ? `<a href="${data.github}" target="_blank" rel="noopener" class="btn btn-orange-pill"><i class="fab fa-github"></i> View GitHub Repo</a>` : ''}
-          ${data.demo ? `<a href="${data.demo}" target="_blank" rel="noopener" class="btn btn-dark-outline-pill"><i class="fas fa-external-link-alt"></i> Live Demo</a>` : ''}
-        </div>
-      `;
+    const projKey = btn.getAttribute('data-project');
+    const data = projectDetails[projKey];
+    if (!data) return;
 
-      projectModal?.classList.add('active');
-      playTone(659.25, 'triangle', 0.15); // E5
-    });
+    modalContent.innerHTML = `
+      <img src="${data.img}" alt="${data.title}" style="width: 100%; height: 220px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: 1.5rem; border: 1px solid var(--border-light);">
+      <h2 style="font-family: var(--font-heading); font-size: 1.75rem; margin-bottom: 0.25rem;">${data.title}</h2>
+      <div style="color: var(--primary-orange); font-weight: 600; font-size: 0.95rem; margin-bottom: 1rem;">${data.subtitle}</div>
+      <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem;">${data.description}</p>
+      <div style="margin-bottom: 1.5rem;">
+        <h4 style="margin-bottom: 0.5rem; font-size: 0.95rem;">Key Highlights:</h4>
+        <ul style="padding-left: 1.25rem; color: var(--text-secondary); font-size: 0.9rem;">
+          ${data.highlights.map(h => `<li style="margin-bottom: 0.25rem;">${h}</li>`).join('')}
+        </ul>
+      </div>
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+        ${data.github ? `<a href="${data.github}" target="_blank" rel="noopener" class="btn btn-orange-pill"><i class="fab fa-github"></i> View GitHub Repo</a>` : ''}
+        ${data.demo ? `<a href="${data.demo}" target="_blank" rel="noopener" class="btn btn-dark-outline-pill"><i class="fas fa-external-link-alt"></i> Live Demo</a>` : ''}
+      </div>
+    `;
+
+    projectModal?.classList.add('active');
+    isModalOpen = true;
+    playTone(659.25, 'triangle', 0.15); // E5
   });
 
   modalClose?.addEventListener('click', () => {
     projectModal?.classList.remove('active');
+    isModalOpen = false;
   });
 
   projectModal?.addEventListener('click', (e) => {
-    if (e.target === projectModal) projectModal.classList.remove('active');
+    if (e.target === projectModal) {
+      projectModal.classList.remove('active');
+      isModalOpen = false;
+    }
   });
 
   /* --------------------------------------------------------------------------
